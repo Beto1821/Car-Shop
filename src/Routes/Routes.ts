@@ -4,7 +4,7 @@ import CarController from '../Controllers/CarController';
 const routes = Router();
 
 routes.post(
-  '/Car',
+  '/cars',
   (req, res, next) => new CarController(req, res, next).create(),
 );
 
