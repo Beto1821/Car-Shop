@@ -25,7 +25,7 @@ abstract class AbstractODM<T> {
   }
 
   public async find(id: string): Promise<T | null> {
-    return this.model.findOne({ id });
+    return this.model.findOne({ _id: id });
   }
 }
 

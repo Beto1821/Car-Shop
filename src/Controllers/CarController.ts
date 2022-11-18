@@ -18,12 +18,12 @@ class CarController {
 
   public find = async (req: Request, res: Response, next: NextFunction) => {
     const { id } = req.params;
-    try {
-      const result = await this.service.find(id);
-      res.status(200).json(result);
-    } catch (error) {
-      next(error);
+
+    const car = await this.service.find(id);
+    if (!car) {
+      return next({ message: 'Car not found' });
     }
+    return res.status(200).json(car);
   };
 }
 

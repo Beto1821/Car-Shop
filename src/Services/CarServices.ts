@@ -25,9 +25,6 @@ class CarService {
   public async find(id: string) {
     const carODM = new CarODM();
     const car = await carODM.find(id);
-    if (!car) {
-      throw new Error('Car not found');
-    }
     return this.creatCarDomain(car);
   }
 }
