@@ -1,9 +1,7 @@
 import {
-  isValidObjectId,
   Model,
   models,
   Schema,
-  UpdateQuery,
   model,
 } from 'mongoose';
 
@@ -22,14 +20,12 @@ abstract class AbstractODM<T> {
     return this.model.create({ ...obj });
   }
 
-  public async update(_id: string, obj: Partial<T>): Promise<T | null> {
-    if (!isValidObjectId(_id)) throw Error('Invalid Mongo id');
+  public async get(): Promise<T[]> {
+    return this.model.find();
+  }
 
-    return this.model.findByIdAndUpdate(
-      { _id },
-      { ...obj } as UpdateQuery<T>,
-      { new: true },
-    );
+  public async find(id: string): Promise<T | null> {
+    return this.model.findOne({ id });
   }
 }
 
