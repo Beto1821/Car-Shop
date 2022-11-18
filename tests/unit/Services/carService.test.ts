@@ -2,8 +2,7 @@ import sinon from 'sinon';
 import { expect } from 'chai';
 import { Model } from 'mongoose';
 import CarService from '../../../src/Services/CarServices';
-import { carMock, carMockWithId, carsOutput, carList } from './mocks/CarMock';
-
+import { carMock, carMockWithId, carsOutput, carList } from './mocks/carMock';
 
 const ERROR_CAR = 'Car not found';
 
