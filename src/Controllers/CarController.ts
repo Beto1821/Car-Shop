@@ -16,14 +16,23 @@ class CarController {
     res.status(200).json(result);
   };
 
-  public find = async (req: Request, res: Response, next: NextFunction) => {
+  public getById = async (req: Request, res: Response, next: NextFunction) => {
     const { id } = req.params;
 
-    const car = await this.service.find(id);
+    const car = await this.service.getById(id);
     if (!car) {
       return next({ message: 'Car not found' });
     }
     return res.status(200).json(car);
+  };
+
+  public updateCar = async (req: Request, res: Response, next: NextFunction) => {
+    const { id } = req.params;
+    const carUpdate = await this.service.updateCar(id, req.body);
+    if (!carUpdate) {
+      return next({ message: 'Car not found' });
+    }
+    return res.status(200).json(carUpdate);
   };
 }
 

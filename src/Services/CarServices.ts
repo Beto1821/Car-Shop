@@ -22,10 +22,17 @@ class CarService {
     return cars.map(this.creatCarDomain);
   }
 
-  public async find(id: string) {
+  public async getById(id: string) {
     const carODM = new CarODM();
-    const car = await carODM.find(id);
+    const car = await carODM.getById(id);
     return this.creatCarDomain(car);
+  }
+
+  public async updateCar(id: string, car: ICar) {
+    const carODM = new CarODM();
+    
+    const carUpdate = await carODM.update(id, car);
+    return this.creatCarDomain(carUpdate);
   }
 }
 
